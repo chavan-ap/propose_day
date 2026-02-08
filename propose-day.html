@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💍 Propose Day 2025</title>
+    
+    <!-- 
+    ═══════════════════════════════════════════════════════════════════
+    PROPOSE DAY WEBSITE - CINEMATIC LUXURY DESIGN
+    ═══════════════════════════════════════════════════════════════════
+    
+    CUSTOMIZATION:
+    1. Line 152: Your proposal question
+    2. Line 274: Image file name
+    3. Line 279: Your celebration message
+    4. Line 605-606: Email & Web3Forms key
+    
+    GITHUB DEPLOYMENT:
+    1. Create repo: "propose-day-2025"
+    2. Upload as "index.html" + photo
+    3. Settings > Pages > Enable
+    4. Share the link! 💍
+    ═══════════════════════════════════════════════════════════════════
+    -->
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Montserrat:wght@300;400;600&display=swap');
+        
+        :root {
+            --deep-purple: #2D1B4E;
+            --royal-purple: #6B46C1;
+            --gold: #D4AF37;
+            --light-gold: #F4E4C1;
+            --dark: #0F0A1E;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--deep-purple) 100%);
+            color: var(--white);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════
+           STARS BACKGROUND
+        ═══════════════════════════════════════════════════════════════ */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════
+           MAIN QUESTION SCREEN
+        ═══════════════════════════════════════════════════════════════ */
+        .screen {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .question-container {
+            text-align: center;
+            max-width: 900px;
+            animation: fadeInScale 1.5s ease-out;
+        }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .ring-icon {
+            font-size: 8rem;
+            display: block;
+            margin-bottom: 40px;
+            animation: ringFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.5));
+        }
+        
+        @keyframes ringFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+        
+        .date-badge {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        
+        .main-question {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, var(--white), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .buttons-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .choice-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            padding: 25px 60px;
+            border: 3px solid var(--gold);
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+            color: var(--gold);
+        }
+        
+        .choice-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--gold);
+            transition: width 0.4s;
+            z-index: -1;
+        }
+        
+        .choice-btn:hover::before {
+            width: 100%;
+        }
+        
+        .choice-btn:hover {
+            color: var(--dark);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+        
+        .yes-btn {
+            background: linear-gradient(135deg, var(--gold), #F4D03F);
+            color: var(--dark);
+            border-color: var(--gold);
+        }
+        
+        .yes-btn::before {
+            background: var(--white);
+        }
+        
+        .no-btn {
+            position: absolute;
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════
+           CELEBRATION SCREEN
+        ═══════════════════════════════════════════════════════════════ */
+        .celebration-screen {
+            display: none;
+            min-height: 100vh;
+            opacity: 0;
+        }
+        
+        .celebration-screen.active {
+            display: flex;
+            animation: celebrateFadeIn 1.2s ease-out forwards;
+        }
+        
+        @keyframes celebrateFadeIn {
+            to { opacity: 1; }
+        }
+        
+        .celebration-content {
+            max-width: 1000px;
+            text-align: center;
+        }
+        
+        .celebration-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .rings-display {
+            font-size: 6rem;
+            margin: 30px 0;
+            animation: ringsAppear 1s ease-out 0.5s backwards;
+        }
+        
+        @keyframes ringsAppear {
+            from {
+                transform: scale(0) rotate(-360deg);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) rotate(0);
+                opacity: 1;
+            }
+        }
+        
+        .celebration-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 20px;
+            margin: 50px auto;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            border: 5px solid var(--gold);
+            animation: fadeInUp 0.8s ease-out 0.7s backwards;
+        }
+        
+        .celebration-message {
+            font-size: 1.4rem;
+            line-height: 1.9;
+            color: var(--light-gold);
+            margin: 50px auto;
+            max-width: 700px;
+            font-weight: 300;
+            animation: fadeInUp 0.8s ease-out 0.9s backwards;
+        }
+        
+        .celebration-message strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════
+           SPARKLES EFFECT
+        ═══════════════════════════════════════════════════════════════ */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+            animation: sparkleFloat 2s ease-out forwards;
+        }
+        
+        @keyframes sparkleFloat {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        /* ═══════════════════════════════════════════════════════════════
+           MOBILE RESPONSIVE
+        ═══════════════════════════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .ring-icon {
+                font-size: 5rem;
+            }
+            
+            .choice-btn {
+                font-size: 1.4rem;
+                padding: 20px 40px;
+            }
+            
+            .buttons-container {
+                gap: 20px;
+            }
+            
+            .celebration-image {
+                max-width: 100%;
+            }
+            
+            .celebration-message {
+                font-size: 1.2rem;
+            }
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- ═══════════════════════════════════════════════════════════════
+         QUESTION SCREEN
+    ═══════════════════════════════════════════════════════════════ -->
+    <div class="screen" id="questionScreen">
+        <div class="question-container">
+            <span class="ring-icon">💍</span>
+            <div class="date-badge">PROPOSE DAY · FEBRUARY 8, 2025</div>
+            <h1 class="main-question">
+                Would You Marry Me Again?
+            </h1>
+            <!-- ↑ CUSTOMIZE YOUR PROPOSAL QUESTION ↑ -->
+            
+            <div class="buttons-container">
+                <button class="choice-btn yes-btn" id="yesBtn">
+                    Yes, Again! 💕
+                </button>
+                <button class="choice-btn no-btn" id="noBtn">
+                    Let me think... 🤔
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ═══════════════════════════════════════════════════════════════
+         CELEBRATION SCREEN
+    ═══════════════════════════════════════════════════════════════ -->
+    <div class="screen celebration-screen" id="celebrationScreen">
+        <div class="celebration-content">
+            <h2 class="celebration-title">
+                She Said Yes... Again! 🎉
+            </h2>
+            
+            <div class="rings-display">💍💍💍</div>
+            
+            <img 
+                src="proposeday.jpeg" 
+                alt="Our special moment" 
+                class="celebration-image"
+            />
+            <!-- ↑ CHANGE IMAGE FILENAME HERE ↑ -->
+            
+            <p class="celebration-message">
+                From the day we said "I do" to this very moment, 
+                my answer remains the same - Yes, a thousand times yes! 
+                Marriage is not just a promise we made once, it's a choice we make every single day.
+                <br><br>
+                Thank you for being my partner, my best friend, and my forever love. 
+                Every day with you reminds me why I fell in love, and why I'd marry you 
+                again and again in every lifetime.
+                <br><br>
+                <strong>Today, tomorrow, and always - you and me, forever. 💕</strong>
+                <br><br>
+                Happy Propose Day, my love! 💍
+            </p>
+            <!-- ↑ CUSTOMIZE YOUR MESSAGE ABOVE ↑ -->
+        </div>
+    </div>
+    
+    <script>
+        // ═══════════════════════════════════════════════════════════════
+        // CREATE STARS BACKGROUND
+        // ═══════════════════════════════════════════════════════════════
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 100;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        createStars();
+        
+        // ═══════════════════════════════════════════════════════════════
+        // NO BUTTON MOVEMENT
+        // ═══════════════════════════════════════════════════════════════
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        
+        function moveNoButton() {
+            const maxX = window.innerWidth - noBtn.offsetWidth - 40;
+            const maxY = window.innerHeight - noBtn.offsetHeight - 40;
+            
+            const randomX = Math.max(20, Math.random() * maxX);
+            const randomY = Math.max(20, Math.random() * maxY);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            noBtn.style.zIndex = '1000';
+        }
+        
+        // Move No button on hover (desktop)
+        noBtn.addEventListener('mouseenter', moveNoButton);
+        
+        // Move No button on touch (mobile)
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveNoButton();
+        });
+        
+        // Move No button on click attempt
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveNoButton();
+        });
+        
+        // ═══════════════════════════════════════════════════════════════
+        // YES BUTTON - CELEBRATION
+        // ═══════════════════════════════════════════════════════════════
+        yesBtn.addEventListener('click', () => {
+            // Hide question screen
+            document.getElementById('questionScreen').classList.add('hidden');
+            
+            // Show celebration
+            const celebrationScreen = document.getElementById('celebrationScreen');
+            celebrationScreen.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Effects
+            createSparkles();
+            sendEmail();
+        });
+        
+        // ═══════════════════════════════════════════════════════════════
+        // SPARKLES EFFECT
+        // ═══════════════════════════════════════════════════════════════
+        function createSparkles() {
+            const sparkles = ['✨', '💫', '⭐', '🌟', '💖', '💍'];
+            
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                    sparkle.style.left = Math.random() * 100 + 'vw';
+                    sparkle.style.top = Math.random() * 100 + 'vh';
+                    sparkle.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                    
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => sparkle.remove(), 2000);
+                }, i * 100);
+            }
+        }
+        
+        // ═══════════════════════════════════════════════════════════════
+        // EMAIL NOTIFICATION
+        // ═══════════════════════════════════════════════════════════════
+        async function sendEmail() {
+            const YOUR_EMAIL = 'ajaychavan_in@outlook.com';
+            const ACCESS_KEY = '1cb04b7e-b18d-4f18-8249-40c248681b7d';
+            
+            try {
+                await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        access_key: ACCESS_KEY,
+                        subject: '💍 SHE SAID YES! - Propose Day',
+                        from_name: 'Propose Day Website',
+                        message: `🎉 AMAZING NEWS! 🎉\n\nShe said YES AGAIN!\n\n💍 Propose Day - Marriage Renewal Success!\n🕐 Time: ${new Date().toLocaleString()}\n\nShe chose you again! What a beautiful reminder of your love. 💕`,
+                        to: YOUR_EMAIL
+                    })
+                });
+                console.log('✅ Proposal notification sent!');
+            } catch (error) {
+                console.error('❌ Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
